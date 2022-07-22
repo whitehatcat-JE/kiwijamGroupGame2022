@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="mazeMapPiece" type="Node2D"]
+
+[node name="sprite" type="ColorRect" parent="."]
+margin_left = -32.0
+margin_right = 32.0
+margin_bottom = 8.0
