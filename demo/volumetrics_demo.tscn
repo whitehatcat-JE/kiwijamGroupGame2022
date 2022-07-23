@@ -1,0 +1,206 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://addons/silicon.vfx.volumetrics/material/volumetric_material.gd" type="Script" id=1]
+[ext_resource path="res://assets/cross_section.fbx" type="PackedScene" id=2]
+[ext_resource path="res://demo/test_volume.png" type="Texture3D" id=3]
+[ext_resource path="res://demo/volumetrics_demo.gd" type="Script" id=6]
+[ext_resource path="res://addons/silicon.vfx.volumetrics/volumetric_fog.gd" type="Script" id=7]
+[ext_resource path="res://demo/camera.gd" type="Script" id=8]
+[ext_resource path="res://addons/silicon.vfx.volumetrics/volume_proxy.gd" type="Script" id=9]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+background_color = Color( 1, 1, 1, 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+auto_exposure_enabled = true
+auto_exposure_scale = 1.0
+dof_blur_far_amount = 0.13
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 1 )
+scatter_color = Color( 0.94902, 0.858824, 0.588235, 1 )
+density = 0.05
+scatter_texture = ExtResource( 3 )
+absorption_color = Color( 0.670588, 0.670588, 0.670588, 1 )
+anisotropy = 0.1
+emission_enabled = false
+uvw_scale = Vector3( 0.177, 0.174, 0.155 )
+uvw_offset = Vector3( 0, 0, 0 )
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 1 )
+scatter_color = Color( 0.568627, 0.501961, 0.894118, 1 )
+density = 0.15
+absorption_color = Color( 0.921569, 0.921569, 0.921569, 1 )
+anisotropy = -0.585
+emission_enabled = false
+uvw_scale = Vector3( 1, 1, 1 )
+uvw_offset = Vector3( 0, 0, 0 )
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 1 )
+scatter_color = Color( 0.572549, 0.572549, 0.572549, 1 )
+density = 1.0
+absorption_color = Color( 0.498039, 0.12549, 0.12549, 1 )
+anisotropy = 0.0
+emission_enabled = true
+emission_color = Color( 0.427451, 0.568627, 0.905882, 1 )
+emission_strength = 0.0
+uvw_scale = Vector3( 1, 1, 1 )
+uvw_offset = Vector3( 0, 0, 0 )
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 6 )
+
+[node name="Camera" type="Camera" parent="."]
+process_priority = 1
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.1269, 2.20875, -4.42659e-07 )
+script = ExtResource( 8 )
+pitch_limit = 175
+max_speed = Vector3( 2, 2, 5 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="VolumetricFog" type="Node" parent="WorldEnvironment"]
+script = ExtResource( 7 )
+start = 0.1
+end = 100.0
+tile_size = 2
+samples = 1
+distribution = 1.0
+temporal_blending = 0.8
+volumetric_shadows = true
+shadow_atlas_size = 1024
+ambient_light_color = Color( 0.184314, 0.184314, 0.184314, 1 )
+ambient_light_energy = 1.0
+cull_mask = 1048575
+
+[node name="OmniLight4" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7077, 4.14368, -27.1174 )
+light_color = Color( 0.996078, 0.847059, 0.345098, 1 )
+shadow_enabled = true
+omni_range = 18.0
+omni_attenuation = 2.73208
+__meta__ = {
+"_vol_id": 201,
+"volumetric": 4.07
+}
+
+[node name="OmniLight5" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7077, 4.14368, -34.9063 )
+light_color = Color( 0.996078, 0.847059, 0.345098, 1 )
+shadow_enabled = true
+omni_range = 18.0
+omni_attenuation = 2.73208
+__meta__ = {
+"_vol_id": 205,
+"volumetric": 4.07
+}
+
+[node name="OmniLight6" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.43133, 4.14368, -31.2541 )
+light_color = Color( 0.996078, 0.847059, 0.345098, 1 )
+shadow_enabled = true
+omni_range = 18.0
+omni_attenuation = 2.73208
+__meta__ = {
+"_vol_id": 204,
+"volumetric": 4.07
+}
+
+[node name="Lights" type="Spatial" parent="."]
+
+[node name="VolumeProxy" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1821, 3.14214, -31.4482 )
+script = ExtResource( 9 )
+material = SubResource( 3 )
+bounds_mode = 1
+extents = Vector3( 1, 1, 1 )
+bounds_fade = Vector3( 0, 0, 0 )
+
+[node name="VolumeProxy4" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9751, 3.14214, -31.4482 )
+script = ExtResource( 9 )
+material = SubResource( 3 )
+bounds_mode = 0
+
+[node name="VolumeProxy2" type="Spatial" parent="."]
+visible = false
+script = ExtResource( 9 )
+material = SubResource( 4 )
+bounds_mode = 1
+extents = Vector3( 16.605, 1.63871, 7.77037 )
+bounds_fade = Vector3( 0, 0.584, 0 )
+
+[node name="VolumeProxy3" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.33799, 0 )
+visible = false
+script = ExtResource( 9 )
+material = SubResource( 5 )
+bounds_mode = 2
+extents = Vector3( 1.5, 1.5, 1.5 )
+bounds_fade = Vector3( 0, 0.5, 0 )
+
+[node name="cross_section" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63637, 2.33564, -39.2089 )
+
+[node name="cross_section2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63637, 2.33564, -31.2089 )
+
+[node name="cross_section3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63637, 2.33564, -23.2089 )
+
+[node name="cross_section4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63637, 2.33564, -15.2089 )
+
+[node name="cross_section5" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36363, 2.33564, -39.2089 )
+
+[node name="cross_section6" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36363, 2.33564, -31.2089 )
+
+[node name="cross_section7" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36363, 2.33564, -23.2089 )
+
+[node name="cross_section8" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36363, 2.33564, -15.2089 )
+
+[node name="cross_section9" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3636, 2.33564, -39.2089 )
+
+[node name="cross_section10" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3636, 2.33564, -31.2089 )
+
+[node name="cross_section11" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3636, 2.33564, -23.2089 )
+
+[node name="cross_section12" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3636, 2.33564, -15.2089 )
+
+[node name="cross_section13" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3636, 2.33564, -39.2089 )
+
+[node name="cross_section14" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3636, 2.33564, -31.2089 )
+
+[node name="cross_section15" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3636, 2.33564, -23.2089 )
+
+[node name="cross_section16" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3636, 2.33564, -15.2089 )
+
+[node name="cross_section17" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3636, 2.33564, -43.2089 )
+
+[node name="cross_section18" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3636, 2.33564, -35.2089 )
+
+[node name="cross_section19" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3636, 2.33564, -27.2089 )
+
+[node name="cross_section20" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3636, 2.33564, -19.2089 )
+
+[node name="cross_section21" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3636, 2.33564, -11.2089 )
