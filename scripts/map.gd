@@ -3,6 +3,8 @@ extends Node2D
 var mazePieceSize:int = 64
 var currentPieces:Array = []
 
+var lastMinuteUpdated:int = -1
+
 onready var mazeMapPiece:PackedScene = preload("res://mazeMapPiece.tscn")
 
 # Called when the node enters the scene tree for the first time.

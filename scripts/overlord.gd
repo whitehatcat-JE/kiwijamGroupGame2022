@@ -7,18 +7,19 @@ const E = 2
 const S = 4
 const W = 8
 
-const MAZE_SIZE:int = 16
+const MAZE_SIZE:int = 8
 
-var seedProgress:int = 0
+var seedProgress:int = 6666668
 var sharedSeed:int = 123456789
 
 var cellWalls = {Vector2(0, -1): N, Vector2(1, 0): E, 
 				  Vector2(0, 1): S, Vector2(-1, 0): W}
 
 func seedRand(lower, upper):
-	seedProgress += 1
-	if seedProgress > 1000000:
-		seedProgress = 0
+	if upper - lower == 0: return 0;
+	seedProgress += 1 
+	while seedProgress > 1000000:
+		seedProgress -= 1000000
 	var newSeed:String = str(pow(sharedSeed, 2) + seedProgress)
 	while len(newSeed) < 11: newSeed = "0" + newSeed + "0"
 	if len(newSeed) % 2 == 1:
@@ -52,7 +53,7 @@ func makeMaze():
 	while unvisited:
 		var neighbors = checkNeighbors(current, unvisited)
 		if neighbors.size() > 0:
-			var next = neighbors[randi() % neighbors.size()]
+			var next = neighbors[seedRand(0, len(neighbors))]
 			stack.append(current)
 			# remove walls from *both* cells
 			var dir = next - current
@@ -69,8 +70,20 @@ func changeMaze(try:int = 0):
 	if try >= 5:
 		#yield(get_tree(), "idle_frame")
 		try = 0
-	var targetCell:Vector2 = Vector2(seedRand(1, MAZE_SIZE - 2), seedRand(1, MAZE_SIZE - 2))
+	var targetCell:Vector2 = Vector2(seedRand(0, MAZE_SIZE - 2), seedRand(0, MAZE_SIZE - 2))
 	var changeDirection = seedRand(0, 3)
+	if changeDirection == 0 and targetCell.y == 0:
+		changeMaze(try + 1)
+		return
+	elif changeDirection == 1 and targetCell.x == MAZE_SIZE - 1:
+		changeMaze(try + 1)
+		return
+	elif changeDirection == 2 and targetCell.y == MAZE_SIZE - 1:
+		changeMaze(try + 1)
+		return
+	elif changeDirection == 3 and targetCell.y == 0:
+		changeMaze(try + 1)
+		return
 	var neighbouringCell:Vector2 = targetCell + [Vector2(0, -1), Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0)][changeDirection]
 	var changedMaze:Array = maze.duplicate(true)
 	var targetDirec:int = [1, 2, 4, 8][changeDirection]
