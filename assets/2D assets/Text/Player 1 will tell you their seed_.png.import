@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Wander Button.png-76c475f75601eef71bf2bf866e13144c.stex"
+path="res://.import/Player 1 will tell you their seed_.png-bffc7939a541a2d71f9f0bf4711f3246.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Wander Button.png"
-dest_files=[ "res://.import/Wander Button.png-76c475f75601eef71bf2bf866e13144c.stex" ]
+source_file="res://assets/2D assets/Text/Player 1 will tell you their seed_.png"
+dest_files=[ "res://.import/Player 1 will tell you their seed_.png-bffc7939a541a2d71f9f0bf4711f3246.stex" ]
 
 [params]
 

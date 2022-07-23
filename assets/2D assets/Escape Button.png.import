@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Next Page.png-d6ec8748a124daaf7481de0ed1338696.stex"
+path="res://.import/Escape Button.png-288cfd84bee1c37b42634d7ebab9280c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Next Page.png"
-dest_files=[ "res://.import/Next Page.png-d6ec8748a124daaf7481de0ed1338696.stex" ]
+source_file="res://assets/2D assets/Escape Button.png"
+dest_files=[ "res://.import/Escape Button.png-288cfd84bee1c37b42634d7ebab9280c.stex" ]
 
 [params]
 

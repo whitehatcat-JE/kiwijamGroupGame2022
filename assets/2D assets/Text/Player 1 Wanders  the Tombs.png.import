@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Next Page2.png-c23dbb633c17d2025320049cab3ac438.stex"
+path="res://.import/Player 1 Wanders  the Tombs.png-a14c6cc39c861bcc19a48a720b37def0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Next Page2.png"
-dest_files=[ "res://.import/Next Page2.png-c23dbb633c17d2025320049cab3ac438.stex" ]
+source_file="res://assets/2D assets/Text/Player 1 Wanders  the Tombs.png"
+dest_files=[ "res://.import/Player 1 Wanders  the Tombs.png-a14c6cc39c861bcc19a48a720b37def0.stex" ]
 
 [params]
 

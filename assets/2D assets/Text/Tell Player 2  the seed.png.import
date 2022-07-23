@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Player 1 Wanders  the Tombs.png-ba7c219feab116448c7a3b3f498aee94.stex"
+path="res://.import/Tell Player 2  the seed.png-82ae10e2671ca6b0664535f8a0f4b49b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player 1 Wanders  the Tombs.png"
-dest_files=[ "res://.import/Player 1 Wanders  the Tombs.png-ba7c219feab116448c7a3b3f498aee94.stex" ]
+source_file="res://assets/2D assets/Text/Tell Player 2  the seed.png"
+dest_files=[ "res://.import/Tell Player 2  the seed.png-82ae10e2671ca6b0664535f8a0f4b49b.stex" ]
 
 [params]
 

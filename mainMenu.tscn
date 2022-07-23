@@ -1,36 +1,87 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Begin Button.png" type="Texture" id=1]
-[ext_resource path="res://Logo.png" type="Texture" id=2]
-[ext_resource path="res://Escape Button.png" type="Texture" id=3]
+[ext_resource path="res://assets/2D assets/Begin Button.png" type="Texture" id=1]
+[ext_resource path="res://assets/2D assets/Logo.png" type="Texture" id=2]
+[ext_resource path="res://assets/2D assets/Escape Button.png" type="Texture" id=3]
 [ext_resource path="res://scripts/mainMenu.gd" type="Script" id=4]
+[ext_resource path="res://assets/2D assets/d0e34eb0365ec9bf18aeab7d7c4be4e5.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/2D assets/Map Paper.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Opening"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/MapPaper:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ 132.23, 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/MapPaper:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 132.23 ]
+}
 
 [node name="mainMenu" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 512, 300 )
+position = Vector2( 510.999, 301.2 )
 
-[node name="logo" type="Sprite" parent="."]
-position = Vector2( 512, 150 )
-scale = Vector2( 0.3, 0.3 )
+[node name="D0E34Eb0365Ec9Bf18Aeab7D7C4Be4E5" type="Sprite" parent="."]
+position = Vector2( 510.999, 301.2 )
+scale = Vector2( 0.999998, 0.800001 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Opening"
+anims/Opening = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="MapPaper" type="Sprite" parent="AnimationPlayer"]
+position = Vector2( 510.999, 834.2 )
+rotation = 2.30786
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 6 )
+offset = Vector2( 2.5, -957.5 )
+
+[node name="logo" type="Sprite" parent="AnimationPlayer/MapPaper"]
+position = Vector2( 0, -1457.5 )
+scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 
-[node name="beginBtn" type="Button" parent="."]
-margin_left = 402.0
-margin_top = 340.0
-margin_right = 928.0
-margin_bottom = 560.0
-rect_scale = Vector2( 0.407933, 0.415606 )
+[node name="beginBtn" type="Button" parent="AnimationPlayer/MapPaper"]
+margin_left = -220.0
+margin_top = -1065.0
+margin_right = 306.0
+margin_bottom = -845.0
+rect_scale = Vector2( 0.8, 0.8 )
 icon = ExtResource( 1 )
+flat = true
 
-[node name="escapeBtn" type="Button" parent="."]
-margin_left = 411.0
-margin_top = 447.0
-margin_right = 937.0
-margin_bottom = 667.0
-rect_scale = Vector2( 0.3551, 0.341765 )
+[node name="escapeBtn" type="Button" parent="AnimationPlayer/MapPaper"]
+margin_left = -170.0
+margin_top = -857.5
+margin_right = 356.0
+margin_bottom = -637.5
+rect_scale = Vector2( 0.6, 0.6 )
 icon = ExtResource( 3 )
+flat = true
 
-[connection signal="button_down" from="beginBtn" to="." method="_on_begin_button_down"]
-[connection signal="button_down" from="escapeBtn" to="." method="_on_escape_button_down"]
+[connection signal="button_down" from="AnimationPlayer/MapPaper/beginBtn" to="." method="_on_begin_button_down"]
+[connection signal="button_down" from="AnimationPlayer/MapPaper/escapeBtn" to="." method="_on_escape_button_down"]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Guide Button.png-0302a798ebe564b6508f9121f5dd0c32.stex"
+path="res://.import/Seed_.png-0a9018919a3f0666dc25261efa80c088.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Guide Button.png"
-dest_files=[ "res://.import/Guide Button.png-0302a798ebe564b6508f9121f5dd0c32.stex" ]
+source_file="res://assets/2D assets/Text/Seed_.png"
+dest_files=[ "res://.import/Seed_.png-0a9018919a3f0666dc25261efa80c088.stex" ]
 
 [params]
 

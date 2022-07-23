@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Logo.png-3f727bc575b71196031e5024c4a29f71.stex"
+path="res://.import/Begin Button.png-ab2ee6e1c699a9a1a64ce5d78a0b4189.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Logo.png"
-dest_files=[ "res://.import/Logo.png-3f727bc575b71196031e5024c4a29f71.stex" ]
+source_file="res://assets/2D assets/Begin Button.png"
+dest_files=[ "res://.import/Begin Button.png-ab2ee6e1c699a9a1a64ce5d78a0b4189.stex" ]
 
 [params]
 

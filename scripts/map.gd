@@ -52,3 +52,9 @@ func renderMaze():
 func _on_changeTime_timeout():
 	O.changeMaze()
 	renderMaze()
+
+
+
+func _on_Button_button_down():
+	#get_tree().change_scene()
+	pass # Replace with function body.
