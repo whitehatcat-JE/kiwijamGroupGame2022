@@ -1,0 +1,104 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/cross_section.fbx" type="PackedScene" id=1]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+background_color = Color( 0.254902, 0.196078, 0.109804, 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_sky_contribution = 0.0
+fog_enabled = true
+fog_color = Color( 0, 0, 0, 1 )
+tonemap_mode = 4
+auto_exposure_enabled = true
+auto_exposure_scale = 1.0
+ss_reflections_enabled = true
+ssao_radius = 61.33
+ssao_intensity = 74.66
+glow_enabled = true
+
+[node name="Spatial" type="Spatial"]
+
+[node name="cross_section" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63637, 2.33564, -39.2089 )
+
+[node name="cross_section2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63637, 2.33564, -31.2089 )
+
+[node name="cross_section3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63637, 2.33564, -23.2089 )
+
+[node name="cross_section4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63637, 2.33564, -15.2089 )
+
+[node name="cross_section5" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36363, 2.33564, -39.2089 )
+
+[node name="cross_section6" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36363, 2.33564, -31.2089 )
+
+[node name="cross_section7" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36363, 2.33564, -23.2089 )
+
+[node name="cross_section8" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36363, 2.33564, -15.2089 )
+
+[node name="cross_section9" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3636, 2.33564, -39.2089 )
+
+[node name="cross_section10" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3636, 2.33564, -31.2089 )
+
+[node name="cross_section11" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3636, 2.33564, -23.2089 )
+
+[node name="cross_section12" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3636, 2.33564, -15.2089 )
+
+[node name="cross_section13" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3636, 2.33564, -39.2089 )
+
+[node name="cross_section14" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3636, 2.33564, -31.2089 )
+
+[node name="cross_section15" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3636, 2.33564, -23.2089 )
+
+[node name="cross_section16" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3636, 2.33564, -15.2089 )
+
+[node name="cross_section17" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3636, 2.33564, -43.2089 )
+
+[node name="cross_section18" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3636, 2.33564, -35.2089 )
+
+[node name="cross_section19" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3636, 2.33564, -27.2089 )
+
+[node name="cross_section20" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3636, 2.33564, -19.2089 )
+
+[node name="cross_section21" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3636, 2.33564, -11.2089 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48946, 3.65537, -32.9629 )
+light_color = Color( 1, 0.929412, 0.780392, 1 )
+shadow_enabled = true
+omni_range = 6.60006
+
+[node name="OmniLight2" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48946, 3.65537, -13.7108 )
+light_color = Color( 0.992157, 0.745098, 0.223529, 1 )
+shadow_enabled = true
+omni_range = 3.978
+
+[node name="OmniLight3" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5105, 3.65537, -32.9629 )
+light_color = Color( 1, 0.929412, 0.780392, 1 )
+shadow_enabled = true
+omni_range = 6.60006
