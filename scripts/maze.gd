@@ -12,13 +12,13 @@ enum WALL {
 	RIGHT
 }
 
-var pieceSpacing:float = 8.0
+var pieceSpacing:float = 9.0
 
 onready var fourWay:PackedScene = preload("res://assets/intersection.tscn")
 onready var threeWay:PackedScene = preload("res://assets/tIntersection.tscn")
-onready var hallway:PackedScene = preload("res://assets/straight_hall.fbx")
-onready var corner:PackedScene = preload("res://assets/L_section.fbx")
-onready var deadEnd:PackedScene = preload("res://assets/dead_end.fbx")
+onready var hallway:PackedScene = preload("res://assets/hallway.tscn")
+onready var corner:PackedScene = preload("res://assets/corner.tscn")
+onready var deadEnd:PackedScene = preload("res://assets/deadEnd.tscn")
 
 
 func _ready():
@@ -28,33 +28,33 @@ func _ready():
 func wallType(walls):
 	match walls:
 		14:
-			return [WALL.DEADEND, 90.0]
+			return [WALL.DEADEND, 0.0]
 		13:
-			return [WALL.DEADEND, 90.0]
+			return [WALL.DEADEND, 270.0]
 		12:
 			return [WALL.CORNER, 0.0]
 		11:
-			return [WALL.DEADEND, 0.0]
+			return [WALL.DEADEND, 180.0]
 		10:
-			return [WALL.HALLWAY, 90.0]
+			return [WALL.HALLWAY, 0.0]
 		9:
 			return [WALL.CORNER, 270.0] 
 		8:
 			return [WALL.TINTERSECTION, 270.0]
 		7:
-			return [WALL.DEADEND, 270.0]
+			return [WALL.DEADEND, 90.0]
 		6:
 			return [WALL.CORNER, 90.0]
 		5:
-			return [WALL.HALLWAY, 0.0] 
+			return [WALL.HALLWAY, 90.0]
 		4:
-			return [WALL.TINTERSECTION, 180.0]
+			return [WALL.TINTERSECTION, 0.0]
 		3:
 			return [WALL.CORNER, 180.0]
 		2:
 			return [WALL.TINTERSECTION, 90.0] # C
 		1:
-			return [WALL.TINTERSECTION, 0.0]
+			return [WALL.TINTERSECTION, 180.0]
 		0:
 			return [WALL.INTERSECTION, 0.0]
 

@@ -7,9 +7,9 @@ const E = 2
 const S = 4
 const W = 8
 
-const MAZE_SIZE:int = 8
+const MAZE_SIZE:int = 16
 
-var seedProgress:int = 6666668
+var seedProgress:int = 6666666
 var sharedSeed:int = 123456789
 
 var cellWalls = {Vector2(0, -1): N, Vector2(1, 0): E, 
