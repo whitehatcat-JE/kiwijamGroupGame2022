@@ -9,7 +9,6 @@ onready var mazeMapPiece:PackedScene = preload("res://mazeMapPiece.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	O.makeMaze()
 	renderMaze()
 
 func _process(delta):
@@ -56,5 +55,4 @@ func _on_changeTime_timeout():
 
 
 func _on_Button_button_down():
-	#get_tree().change_scene()
-	pass # Replace with function body.
+	get_tree().change_scene("res://mainMenu.tscn")

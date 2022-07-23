@@ -8,7 +8,7 @@ var gravity : float = 12
 # camera
 var minLookangle : float = -90
 var maxLookangle : float = 90
-var lookSensitivity : float = 10
+var lookSensitivity : float = 120
 
 # vectors
 var vel : Vector3 = Vector3()
@@ -18,6 +18,7 @@ var mouseDelta : Vector2 = Vector2()
 onready var camera : Camera = get_node("Camera")
 
 func _ready():
+	pass
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
@@ -37,6 +38,11 @@ func _physics_process(delta):
 		input.x -= 1
 	if Input.is_action_pressed("move_right"):
 		input.x += 1
+	
+	if abs(input.x) + abs(input.y) > 0:
+		$headAnims.playback_speed = 2.0
+	else:
+		$headAnims.playback_speed = 0.5
 	
 	input = input.normalized()
 	

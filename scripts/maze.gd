@@ -12,7 +12,7 @@ enum WALL {
 	RIGHT
 }
 
-var pieceSpacing:float = 9.0
+var pieceSpacing:float = 6.0
 
 onready var fourWay:PackedScene = preload("res://assets/intersection.tscn")
 onready var threeWay:PackedScene = preload("res://assets/tIntersection.tscn")
@@ -22,7 +22,6 @@ onready var deadEnd:PackedScene = preload("res://assets/deadEnd.tscn")
 
 
 func _ready():
-	O.makeMaze()
 	renderMaze()
 
 func wallType(walls):

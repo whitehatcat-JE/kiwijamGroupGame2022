@@ -9,11 +9,16 @@ const W = 8
 
 const MAZE_SIZE:int = 16
 
-var seedProgress:int = 6666666
+var seedProgress:int = round(rand_range(0, 999999))
 var sharedSeed:int = 123456789
 
 var cellWalls = {Vector2(0, -1): N, Vector2(1, 0): E, 
 				  Vector2(0, 1): S, Vector2(-1, 0): W}
+
+func _ready():
+	randomize()
+	O.seedProgress = round(rand_range(0, 999999))
+	O.makeMaze()
 
 func seedRand(lower, upper):
 	if upper - lower == 0: return 0;
@@ -42,6 +47,7 @@ func checkNeighbors(cell, unvisited):
 func makeMaze():
 	var unvisited = []  # array of unvisited tiles
 	var stack = []
+	maze.clear()
 	for y in range(MAZE_SIZE):
 		maze.append([])
 		for x in range(MAZE_SIZE):
