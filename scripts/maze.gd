@@ -20,9 +20,17 @@ onready var hallway:PackedScene = preload("res://assets/hallway.tscn")
 onready var corner:PackedScene = preload("res://assets/corner.tscn")
 onready var deadEnd:PackedScene = preload("res://assets/deadEnd.tscn")
 
+var mazeAssets:Array = []
+
+var lastMinuteUpdated = -1
 
 func _ready():
+	lastMinuteUpdated = OS.get_datetime()["minute"]
 	renderMaze()
+
+#func _process(delta):
+	#if lastMinuteUpdated != OS.get_datetime()["minute"] or true:
+	#	updateMaze()
 
 func wallType(walls):
 	match walls:
@@ -59,6 +67,7 @@ func wallType(walls):
 
 func renderMaze():
 	for y in range(O.MAZE_SIZE):
+		mazeAssets.append([])
 		for x in range(O.MAZE_SIZE):
 			var newPiece:Node
 			var wallInfo:Array = wallType(O.maze[y][x])
@@ -74,5 +83,32 @@ func renderMaze():
 				WALL.INTERSECTION:
 					newPiece = fourWay.instance()
 			self.add_child(newPiece)
+			mazeAssets[y].append(newPiece)
 			newPiece.rotation_degrees.y = wallInfo[1]
 			newPiece.translation = Vector3(x*pieceSpacing, 0.0, y*pieceSpacing)
+
+func updateMaze():
+	var newMaze = O.changeMaze()
+	for y in range(O.MAZE_SIZE):
+		for x in range(O.MAZE_SIZE):
+			if newMaze[y][x] != O.maze[y][x]:
+				mazeAssets[y][x].queue_free()
+				
+				var newPiece:Node
+				var wallInfo:Array = wallType(newMaze[y][x])
+				match wallInfo[0]:
+					WALL.DEADEND:
+						newPiece = deadEnd.instance()
+					WALL.HALLWAY:
+						newPiece = hallway.instance()
+					WALL.CORNER:
+						newPiece = corner.instance()
+					WALL.TINTERSECTION:
+						newPiece = threeWay.instance()
+					WALL.INTERSECTION:
+						newPiece = fourWay.instance()
+				self.add_child(newPiece)
+				mazeAssets[y].append(newPiece)
+				newPiece.rotation_degrees.y = wallInfo[1]
+				newPiece.translation = Vector3(x*pieceSpacing, 0.0, y*pieceSpacing)
+	O.maze = newMaze

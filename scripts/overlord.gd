@@ -106,7 +106,7 @@ func changeMaze(try:int = 0):
 	if !confirmSolvability(changedMaze, targetCell) or !confirmSolvability(changedMaze, neighbouringCell):
 		changeMaze(try + 1)
 		return
-	maze = changedMaze
+	return changedMaze
 
 func confirmSolvability(newMaze:Array, startingPos:Vector2):
 	var goal:Vector2 = Vector2(MAZE_SIZE - 1, MAZE_SIZE - 1)

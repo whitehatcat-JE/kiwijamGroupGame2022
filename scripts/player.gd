@@ -2,7 +2,7 @@ extends KinematicBody
 
 
 # physics
-var moveSpeed : float = 5.0
+var moveSpeed : float = 2.0
 var gravity : float = 12
 
 # camera

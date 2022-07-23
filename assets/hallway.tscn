@@ -23,7 +23,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 2.2, 0, -1, 0, -4.37114e-08, 2.294
 shape = SubResource( 5 )
 
 [node name="torch" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.497725, 0.913158, -1.7662 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.723457, 0.913158, -1.7662 )
 
 [node name="torch2" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.485313, 0.913158, 1.99448 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.697998, 0.913158, 1.99448 )
