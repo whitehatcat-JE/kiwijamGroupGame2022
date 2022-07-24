@@ -9,7 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	O.seedProgress
 
 
 func _on_LineEdit_text_changed(new_text):

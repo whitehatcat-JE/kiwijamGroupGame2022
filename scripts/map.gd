@@ -12,7 +12,7 @@ func _ready():
 	renderMaze()
 
 func _process(delta):
-	pass
+	
 
 func generateMazePiece(startingPos:Vector2):
 	var newMazePiece:Node = mazeMapPiece.instance()
@@ -55,4 +55,8 @@ func _on_changeTime_timeout():
 
 
 func _on_Button_button_down():
+	get_tree().change_scene("res://mainMenu.tscn")
+
+
+func _on_Button2_button_down():
 	get_tree().change_scene("res://mainMenu.tscn")
