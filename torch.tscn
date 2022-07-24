@@ -1,8 +1,51 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scripts/torch.gd" type="Script" id=1]
 [ext_resource path="res://assets/torch_base1.material" type="Material" id=2]
 [ext_resource path="res://assets/torch_Body.material" type="Material" id=3]
+[ext_resource path="res://assets/stylized_fire.shader" type="Shader" id=4]
+[ext_resource path="res://assets/StylizedFire/HoleNoise.png" type="Texture" id=5]
+[ext_resource path="res://assets/StylizedFire/FireMask.png" type="Texture" id=6]
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 4 )
+shader_param/emission_intensity = 1.0
+shader_param/time_scale = 2.0
+shader_param/texture_scale = Vector2( 3, 3 )
+shader_param/edge_softness = 0.05
+shader_param/noise_texture = ExtResource( 5 )
+shader_param/texture_mask = ExtResource( 6 )
+
+[sub_resource type="Gradient" id=8]
+colors = PoolColorArray( 0.980392, 0.8, 0, 1, 1, 0, 0.447059, 0 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+
+[sub_resource type="Curve" id=10]
+_data = [ Vector2( 0, 0 ), 0.0, 5.43636, 0, 0, Vector2( 0.48913, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+lifetime_randomness = 0.81
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.5
+linear_accel = 4.0
+scale = 2.0
+scale_random = 1.0
+scale_curve = SubResource( 11 )
+color_ramp = SubResource( 9 )
+
+[sub_resource type="SpatialMaterial" id=14]
+flags_unshaded = true
+
+[sub_resource type="QuadMesh" id=13]
+material = SubResource( 14 )
+size = Vector2( 0.15, 0.15 )
 
 [sub_resource type="Animation" id=6]
 resource_name = "flicker"
@@ -93,6 +136,16 @@ omni_range = 2.5
 __meta__ = {
 "volumetric": 1.0
 }
+
+[node name="Particles" type="Particles" parent="torchLight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.222327, 0 )
+material_override = SubResource( 7 )
+cast_shadow = 0
+amount = 25
+lifetime = 0.5
+randomness = 0.74
+process_material = SubResource( 12 )
+draw_pass_1 = SubResource( 13 )
 
 [node name="torchAnims" type="AnimationPlayer" parent="."]
 autoplay = "flicker"
