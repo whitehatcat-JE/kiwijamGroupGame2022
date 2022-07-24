@@ -17,7 +17,7 @@ func _on_LineEdit_text_changed(new_text):
 
 
 func _on_StartButton_button_down():
+	get_tree().change_scene("res://Loading.tscn")
 	O.seedProgress = int(storedSeed)
 	print(O.seedProgress)
 	O.makeMaze()
-	get_tree().change_scene("res://map.tscn")

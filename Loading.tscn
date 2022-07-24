@@ -1,23 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/2D assets/d0e34eb0365ec9bf18aeab7d7c4be4e5.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/2D assets/Loading image.png" type="Texture" id=2]
 [ext_resource path="res://assets/2D assets/Text/Waiting to sync with clock.png" type="Texture" id=3]
 
+[sub_resource type="Animation" id=3]
+resource_name = "Clean"
+
 [sub_resource type="Animation" id=1]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
 
 [sub_resource type="Animation" id=2]
 resource_name = "SPIIIIIN"
@@ -49,6 +40,8 @@ texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("LoadingImage")
+autoplay = "SPIIIIIN"
+anims/Clean = SubResource( 3 )
 anims/RESET = SubResource( 1 )
 anims/SPIIIIIN = SubResource( 2 )
 
