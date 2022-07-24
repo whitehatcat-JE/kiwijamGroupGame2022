@@ -11,6 +11,9 @@ extents = Vector3( 3.03, 1, 1.5 )
 
 [node name="tIntersection" type="Spatial"]
 
+[node name="t_section2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, -1, 1, 0, 0 )
+
 [node name="walls" type="StaticBody" parent="."]
 
 [node name="hitbox2" type="CollisionShape" parent="walls"]
@@ -25,8 +28,20 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 2.2, 0, 0, 0, 1, -0.0200001, 0.940434, 2.3 )
 shape = SubResource( 2 )
 
-[node name="t_section" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, -1, 1, 0, 0 )
-
 [node name="torch" parent="." instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.723457, 0.913158, -1.7662 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.723457, 0.913158, -1.91183 )
+
+[node name="torch2" parent="." instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.706999, 0.913158, -1.91183 )
+
+[node name="torch3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -1.94644, 0.913158, -0.722683 )
+
+[node name="torch4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 1.90544, 0.913158, -0.722683 )
+
+[node name="torch5" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.94644, 0.913158, 0.706129 )
+
+[node name="torch6" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.90544, 0.913158, 0.706129 )

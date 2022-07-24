@@ -25,6 +25,7 @@ auto_exposure_scale = 0.5
 ss_reflections_enabled = true
 ssao_radius = 61.33
 ssao_intensity = 74.66
+dof_blur_far_enabled = true
 dof_blur_far_distance = 15.0
 dof_blur_far_transition = 10.0
 dof_blur_far_quality = 2
@@ -105,6 +106,7 @@ far = 300.0
 
 [node name="player" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.338448, 0 )
+collision_layer = 1
 
 [node name="torch" type="Spatial" parent="player"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.285766, 1.01041, -0.33694 )
