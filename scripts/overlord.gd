@@ -1,13 +1,16 @@
 extends Node
 
+var originalMaze:Array = []
 var maze:Array = []
+
+var plrPos:Vector3 = Vector3(0, 0, 0)
 
 const N = 1
 const E = 2
 const S = 4
 const W = 8
 
-const MAZE_SIZE:int = 16
+const MAZE_SIZE:int = 12
 
 var seedProgress:int = 999999
 var sharedSeed:int = 123456789
@@ -66,38 +69,37 @@ func makeMaze():
 			unvisited.erase(current)
 		elif stack:
 			current = stack.pop_back()
+	originalMaze = maze.duplicate(true)
 
-func changeMaze(changedMaze:Array = maze.duplicate(true)):
-	var targetCell:Vector2 = Vector2(seedRand(0, MAZE_SIZE - 2), seedRand(0, MAZE_SIZE - 2))
-	var changeDirection = seedRand(0, 3)
-	if changeDirection == 0 and targetCell.y == 0:
-		changeMaze(changedMaze)
-		return changedMaze
-	elif changeDirection == 1 and targetCell.x == MAZE_SIZE - 1:
-		changeMaze(changedMaze)
-		return changedMaze
-	elif changeDirection == 2 and targetCell.y == MAZE_SIZE - 1:
-		changeMaze(changedMaze)
-		return changedMaze
-	elif changeDirection == 3 and targetCell.y == 0:
-		changeMaze(changedMaze)
-		return changedMaze
+func changeMaze():
+	var targetCell:Vector2
+	var changeDirection
+	while true:
+		targetCell = Vector2(seedRand(0, MAZE_SIZE - 2), seedRand(0, MAZE_SIZE - 2))
+		changeDirection = seedRand(0, 3)
+		if changeDirection == 0 and targetCell.y == 0: continue
+		elif changeDirection == 1 and targetCell.x == MAZE_SIZE - 1: continue
+		elif changeDirection == 2 and targetCell.y == MAZE_SIZE - 1: continue
+		elif changeDirection == 3 and targetCell.y == 0: continue
+		elif checkIfWall(originalMaze[targetCell.y][targetCell.x], [1, 2, 4, 8][changeDirection]): continue;
+		else: break;
 	var neighbouringCell:Vector2 = targetCell + [Vector2(0, -1), Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0)][changeDirection]
 	var targetDirec:int = [1, 2, 4, 8][changeDirection]
 	var neighbouringDirec:int = [4, 8, 1, 2][changeDirection]
+	var changedMaze = maze.duplicate(true)
 	if checkIfWall(changedMaze[targetCell.y][targetCell.x], targetDirec):
 		if changedMaze[targetCell.y][targetCell.x] in [1, 2, 4, 8]:
-			changeMaze(changedMaze)
-			return changedMaze
+			changeMaze()
+			return
 		changedMaze[targetCell.y][targetCell.x] -= targetDirec
 		changedMaze[neighbouringCell.y][neighbouringCell.x] -= neighbouringDirec
 	else:
 		changedMaze[targetCell.y][targetCell.x] += targetDirec
 		changedMaze[neighbouringCell.y][neighbouringCell.x] += neighbouringDirec
-	if !confirmSolvability(changedMaze, targetCell) or !confirmSolvability(changedMaze, neighbouringCell):
-		changeMaze(changedMaze)
-		return changedMaze
-	return changedMaze
+	#if !confirmSolvability(changedMaze, targetCell) or !confirmSolvability(changedMaze, neighbouringCell):
+	#	changeMaze()
+	#	return
+	maze = changedMaze.duplicate(true)
 
 func confirmSolvability(newMaze:Array, startingPos:Vector2):
 	var goal:Vector2 = Vector2(MAZE_SIZE - 1, MAZE_SIZE - 1)

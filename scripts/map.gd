@@ -9,10 +9,9 @@ onready var mazeMapPiece:PackedScene = preload("res://mazeMapPiece.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	O.makeMaze()
 	renderMaze()
 
-func _process(delta):
-	
 
 func generateMazePiece(startingPos:Vector2):
 	var newMazePiece:Node = mazeMapPiece.instance()

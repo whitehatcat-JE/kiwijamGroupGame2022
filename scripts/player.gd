@@ -62,6 +62,7 @@ func _physics_process(delta):
 	vel = move_and_slide(vel, Vector3.UP)
 
 func _process(delta):
+	O.plrPos = self.translation
 	
 	camera.rotation_degrees.x -= mouseDelta.y * lookSensitivity * delta
 	

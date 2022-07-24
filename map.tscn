@@ -19,9 +19,6 @@ position = Vector2( 519, 549 )
 current = true
 zoom = Vector2( 3, 3 )
 
-[node name="changeTime" type="Timer" parent="."]
-wait_time = 0.1
-
 [node name="MapPaper4" type="Sprite" parent="."]
 position = Vector2( 850, 807.5 )
 texture = ExtResource( 4 )
@@ -57,6 +54,5 @@ rect_scale = Vector2( 2.11225, 1.98442 )
 icon = ExtResource( 3 )
 flat = true
 
-[connection signal="timeout" from="changeTime" to="." method="_on_changeTime_timeout"]
 [connection signal="button_down" from="Button2" to="." method="_on_Button2_button_down"]
 [connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
