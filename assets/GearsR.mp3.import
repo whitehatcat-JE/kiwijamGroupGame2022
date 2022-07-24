@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/GearsR.mp3-5494d3bb6a93ca36a386078c34080ed0.mp3str"
+
+[deps]
+
+source_file="res://assets/GearsR.mp3"
+dest_files=[ "res://.import/GearsR.mp3-5494d3bb6a93ca36a386078c34080ed0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

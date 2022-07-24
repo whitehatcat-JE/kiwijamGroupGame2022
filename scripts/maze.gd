@@ -19,6 +19,7 @@ onready var threeWay:PackedScene = preload("res://assets/tIntersection.tscn")
 onready var hallway:PackedScene = preload("res://assets/hallway.tscn")
 onready var corner:PackedScene = preload("res://assets/corner.tscn")
 onready var deadEnd:PackedScene = preload("res://assets/deadEnd.tscn")
+onready var endPoint:PackedScene = preload("res://assets/endPoint.tscn")
 
 var mazeAssets:Array = []
 
@@ -31,6 +32,7 @@ func _ready():
 	lastMinuteUpdated = OS.get_datetime()["minute"]
 	O.makeMaze()
 	renderMaze()
+	$endPoint.translation = Vector3((O.MAZE_SIZE)*pieceSpacing, 0.0, (O.MAZE_SIZE-1)*pieceSpacing)
 
 func _process(delta):
 	pass

@@ -78,3 +78,11 @@ func _input(event):
 		mouseDelta = event.relative
 
 
+
+
+func _on_audioScareCooldown_timeout():
+	if rand_range(0.0, 2.0) > 1.5:
+		if rand_range(0.0, 1.0) > 0.5:
+			$gearsA.play()
+		else:
+			$gearsB.play()

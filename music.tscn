@@ -6,3 +6,4 @@
 
 [node name="backgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+autoplay = true

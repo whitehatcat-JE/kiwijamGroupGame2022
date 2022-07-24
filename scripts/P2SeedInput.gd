@@ -17,6 +17,7 @@ func _on_LineEdit_text_changed(new_text):
 
 
 func _on_StartButton_button_down():
+	O.isPlr1 = false
 	get_tree().change_scene("res://Loading.tscn")
 	O.seedProgress = int(storedSeed)
 	print(O.seedProgress)

@@ -12,11 +12,13 @@ const W = 8
 
 const MAZE_SIZE:int = 12
 
-var seedProgress:int = 999999
+var seedProgress:int = rand_range(0, 999999)
 var sharedSeed:int = 123456789
 
 var cellWalls = {Vector2(0, -1): N, Vector2(1, 0): E, 
 				  Vector2(0, 1): S, Vector2(-1, 0): W}
+
+var isPlr1:bool = false
 
 func seedRand(lower, upper):
 	if upper - lower == 0: return 0;
@@ -69,6 +71,7 @@ func makeMaze():
 			unvisited.erase(current)
 		elif stack:
 			current = stack.pop_back()
+	maze[MAZE_SIZE-1][MAZE_SIZE-1] -= 2
 	originalMaze = maze.duplicate(true)
 
 func changeMaze():
