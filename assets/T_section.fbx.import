@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/t_section.fbx-d34f3c8d7889b1a1e591094f4420ff60.scn"
+path="res://.import/T_section.fbx-633d2545cbe5f53e2a9780f99ae4408a.scn"
 
 [deps]
 
-source_file="res://assets/t_section.fbx"
-dest_files=[ "res://.import/t_section.fbx-d34f3c8d7889b1a1e591094f4420ff60.scn" ]
+source_file="res://assets/T_section.fbx"
+dest_files=[ "res://.import/T_section.fbx-633d2545cbe5f53e2a9780f99ae4408a.scn" ]
 
 [params]
 
