@@ -50,50 +50,6 @@ flags_unshaded = true
 material = SubResource( 14 )
 size = Vector2( 0.15, 0.15 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "flicker"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("torchLight:light_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
-"transitions": PoolRealArray( -2, -2, -2, 1 ),
-"update": 0,
-"values": [ Color( 1, 0.729412, 0.494118, 1 ), Color( 0.972549, 0.713726, 0.486275, 1 ), Color( 1, 0.737255, 0.560784, 1 ), Color( 1, 0.729412, 0.494118, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("torchLight:omni_range")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
-"transitions": PoolRealArray( -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2 ),
-"update": 0,
-"values": [ 1.796, 1.7, 1.68, 1.85, 1.82, 1.76, 1.82, 1.77, 1.73, 1.69, 1.83 ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "headBob"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Camera:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( -2, -2, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 1.33961, 0 ), Vector3( 0, 1.32, 0 ), Vector3( 0, 1.33961, 0 ) ]
-}
-
 [sub_resource type="ArrayMesh" id=4]
 blend_shape_mode = 0
 surfaces/0 = {
@@ -126,6 +82,62 @@ surfaces/0 = {
 "vertex_count": 480
 }
 
+[sub_resource type="Animation" id=2]
+resource_name = "flicker"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera/torch/RootNode/torch/torch_body/torchLight:light_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( -2, -2, -2, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.729412, 0.494118, 1 ), Color( 0.972549, 0.713726, 0.486275, 1 ), Color( 1, 0.737255, 0.560784, 1 ), Color( 1, 0.729412, 0.494118, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera/torch/RootNode/torch/torch_body/torchLight:omni_range")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2 ),
+"update": 0,
+"values": [ 1.796, 1.7, 1.68, 1.85, 1.82, 1.76, 1.82, 1.77, 1.73, 1.69, 1.83 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "headBob"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( -2, -2, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.33961, 0 ), Vector3( 0, 1.32, 0 ), Vector3( 0, 1.33961, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera/torch:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( -2, -2, 1 ),
+"update": 0,
+"values": [ Vector3( -2.184, -0.005, -0.949 ), Vector3( -2.184, -0.01, -0.949 ), Vector3( -2.184, -0.005, -0.949 ) ]
+}
+
 [node name="player" type="KinematicBody"]
 collision_layer = 0
 script = ExtResource( 1 )
@@ -135,11 +147,22 @@ transform = Transform( 1, 0, 3.82137e-15, 3.82137e-15, 4.37114e-08, -1, 0, 1, 4.
 shape = SubResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33868, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33961, 0 )
 current = true
 
-[node name="torchLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19132, 0 )
+[node name="torch" type="Spatial" parent="Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.184, -0.005, -0.949 )
+
+[node name="RootNode" type="Spatial" parent="Camera/torch"]
+
+[node name="torch" type="Spatial" parent="Camera/torch/RootNode"]
+transform = Transform( 100, 0, 0, 0, -19.6477, 98.0508, 0, -98.0508, -19.6477, -0.432343, -0.467313, 0.778689 )
+
+[node name="torch_body" type="Spatial" parent="Camera/torch/RootNode/torch"]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 3.38813e-21, 0, 1, 0.0289228, 0, 0 )
+
+[node name="torchLight" type="OmniLight" parent="Camera/torch/RootNode/torch/torch_body"]
+transform = Transform( -0.01, 1.71766e-10, 8.57188e-10, 8.74228e-10, 0.00196477, 0.00980509, 0, 0.00980509, -0.00196477, 0.00209477, 0.00242609, 0.00204839 )
 light_color = Color( 0.984975, 0.724377, 0.520003, 1 )
 light_energy = 0.3
 shadow_enabled = true
@@ -148,7 +171,7 @@ __meta__ = {
 "volumetric": 1.0
 }
 
-[node name="Particles" type="Particles" parent="torchLight"]
+[node name="Particles" type="Particles" parent="Camera/torch/RootNode/torch/torch_body/torchLight"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.209769, 0.137695, -0.34691 )
 material_override = SubResource( 15 )
 cast_shadow = 0
@@ -157,6 +180,21 @@ lifetime = 0.5
 randomness = 0.74
 process_material = SubResource( 18 )
 draw_pass_1 = SubResource( 19 )
+
+[node name="torch_body001" type="MeshInstance" parent="Camera/torch/RootNode/torch/torch_body"]
+mesh = SubResource( 4 )
+material/0 = null
+__meta__ = {
+"apply_volumetrics": false
+}
+
+[node name="torch_steel" type="MeshInstance" parent="Camera/torch/RootNode/torch/torch_body"]
+transform = Transform( 1, 0, 0, 0, 1, -2.84217e-14, 0, 2.84217e-14, 1, 0, 0, 0 )
+mesh = SubResource( 5 )
+material/0 = null
+__meta__ = {
+"apply_volumetrics": false
+}
 
 [node name="torchAnims" type="AnimationPlayer" parent="."]
 autoplay = "flicker"
@@ -167,29 +205,3 @@ anims/flicker = SubResource( 2 )
 autoplay = "headBob"
 playback_speed = 0.5
 anims/headBob = SubResource( 3 )
-
-[node name="torch" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25046, 1.41012, -0.976323 )
-
-[node name="RootNode" type="Spatial" parent="torch"]
-
-[node name="torch" type="Spatial" parent="torch/RootNode"]
-transform = Transform( 100, 0, 0, 0, -19.6477, 98.0508, 0, -98.0508, -19.6477, -0.432343, -0.467313, 0.778689 )
-
-[node name="torch_body" type="Spatial" parent="torch/RootNode/torch"]
-transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 3.38813e-21, 0, 1, 0.0289228, 0, 0 )
-
-[node name="torch_body001" type="MeshInstance" parent="torch/RootNode/torch/torch_body"]
-mesh = SubResource( 4 )
-material/0 = null
-__meta__ = {
-"apply_volumetrics": false
-}
-
-[node name="torch_steel" type="MeshInstance" parent="torch/RootNode/torch/torch_body"]
-transform = Transform( 1, 0, 0, 0, 1, -2.84217e-14, 0, 2.84217e-14, 1, 0, 0, 0 )
-mesh = SubResource( 5 )
-material/0 = null
-__meta__ = {
-"apply_volumetrics": false
-}

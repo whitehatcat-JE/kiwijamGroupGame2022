@@ -25,12 +25,13 @@ var mazeAssets:Array = []
 var lastMinuteUpdated = -1
 
 func _ready():
-	lastMinuteUpdated = OS.get_datetime()["minute"]
+	lastMinuteUpdated = OS.get_datetime()["second"]
+	O.makeMaze()
 	renderMaze()
 
-#func _process(delta):
-	#if lastMinuteUpdated != OS.get_datetime()["minute"] or true:
-	#	updateMaze()
+func _process(delta):
+	if lastMinuteUpdated != OS.get_datetime()["second"]:
+		updateMaze()
 
 func wallType(walls):
 	match walls:
@@ -62,7 +63,7 @@ func wallType(walls):
 			return [WALL.TINTERSECTION, 90.0] # C
 		1:
 			return [WALL.TINTERSECTION, 180.0]
-		0:
+		_:
 			return [WALL.INTERSECTION, 0.0]
 
 func renderMaze():
@@ -92,6 +93,8 @@ func updateMaze():
 	for y in range(O.MAZE_SIZE):
 		for x in range(O.MAZE_SIZE):
 			if newMaze[y][x] != O.maze[y][x]:
+				#while $player.translation.distance_to(mazeAssets[y][x].translation) < 25.0:
+				#	yield(get_tree().create_timer(5.0), "timeout")
 				mazeAssets[y][x].queue_free()
 				
 				var newPiece:Node
@@ -108,7 +111,7 @@ func updateMaze():
 					WALL.INTERSECTION:
 						newPiece = fourWay.instance()
 				self.add_child(newPiece)
-				mazeAssets[y].append(newPiece)
+				mazeAssets[y][x] = newPiece
 				newPiece.rotation_degrees.y = wallInfo[1]
 				newPiece.translation = Vector3(x*pieceSpacing, 0.0, y*pieceSpacing)
-	O.maze = newMaze
+	O.maze = newMaze.duplicate(true)
