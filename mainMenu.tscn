@@ -67,7 +67,6 @@ offset = Vector2( 2.5, -957.5 )
 
 [node name="You’llNeverFeelAlone" type="Sprite" parent="AnimationPlayer/MapPaper"]
 position = Vector2( 0, -1037.5 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 8 )
 
 [node name="logo" type="Sprite" parent="AnimationPlayer/MapPaper"]
