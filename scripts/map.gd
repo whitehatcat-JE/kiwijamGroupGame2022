@@ -1,5 +1,12 @@
 extends Node2D
 
+enum WALL {
+	UP = 1,
+	RIGHT = 2,
+	DOWN = 4,
+	LEFT = 8
+}
+
 var mazePieceSize:int = 64
 var currentPieces:Array = []
 
@@ -11,6 +18,10 @@ onready var mazeMapPiece:PackedScene = preload("res://mazeMapPiece.tscn")
 func _ready():
 	O.makeMaze()
 	renderMaze()
+
+func _process(delta):
+	pass
+	#_on_changeTime_timeout()
 
 
 func generateMazePiece(startingPos:Vector2):
@@ -45,12 +56,36 @@ func renderMaze():
 				walls -= 1
 				var newPiece:Node = generateMazePiece(Vector2(x*mazePieceSize, y*mazePieceSize))
 				newPiece.position.y -= mazePieceSize / 2
-
+	for gate in O.gates:
+		print(gate)
+		var targetGate:int
+		if gate[0][4]: targetGate = 0;
+		else: targetGate = 1;
+		var pieceA:Node = generateMazePiece(gate[targetGate][0] * Vector2(mazePieceSize, mazePieceSize))
+		var pieceB:Node = generateMazePiece(gate[targetGate][2] * Vector2(mazePieceSize, mazePieceSize))
+		match gate[targetGate][1]:
+			WALL.UP:
+				pieceA.position.y -= mazePieceSize / 2
+				pieceB.position.y += mazePieceSize / 2
+				pieceB.rotation_degrees = 180
+			WALL.RIGHT:
+				pieceA.position.x += mazePieceSize / 2
+				pieceA.rotation_degrees = 90
+				pieceB.position.x -= mazePieceSize / 2
+				pieceB.rotation_degrees = -90
+			WALL.DOWN:
+				pieceA.position.y += mazePieceSize / 2
+				pieceA.rotation_degrees = 180
+				pieceB.position.y -= mazePieceSize / 2
+			WALL.LEFT:
+				pieceA.position.x -= mazePieceSize / 2
+				pieceA.rotation_degrees = -90
+				pieceB.position.x += mazePieceSize / 2
+				pieceB.rotation_degrees = 90
 
 func _on_changeTime_timeout():
 	O.changeMaze()
 	renderMaze()
-
 
 
 func _on_Button_button_down():

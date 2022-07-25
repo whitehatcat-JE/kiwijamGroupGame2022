@@ -7,9 +7,9 @@ enum WALL {
 	DEADEND,
 	INTERSECTION,
 	UP,
-	LEFT,
+	RIGHT,
 	DOWN,
-	RIGHT
+	LEFT
 }
 
 var pieceSpacing:float = 6.0
@@ -35,9 +35,8 @@ func _ready():
 	$endPoint.translation = Vector3((O.MAZE_SIZE)*pieceSpacing, 0.0, (O.MAZE_SIZE-1)*pieceSpacing)
 
 func _process(delta):
-	pass
-	#O.changeMaze()
-	#updateMaze()
+	O.changeMaze()
+	updateMaze()
 	
 
 func wallType(walls):
