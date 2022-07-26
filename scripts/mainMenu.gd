@@ -1,7 +1,7 @@
 extends Node2D
 
 func _on_begin_button_down() -> void:
-	get_tree().change_scene("res://PlayerSelect.tscn")
+	get_tree().change_scene("res://playerSelect.tscn")
  
 
 func _on_escape_button_down():

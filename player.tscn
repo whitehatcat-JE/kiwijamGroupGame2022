@@ -6,11 +6,12 @@
 [ext_resource path="res://assets/StylizedFire/FireMask.png" type="Texture" id=4]
 [ext_resource path="res://assets/stylized_fire.shader" type="Shader" id=5]
 [ext_resource path="res://assets/head_textured.fbx" type="PackedScene" id=6]
-[ext_resource path="res://assets/Running_fx.mp3" type="AudioStream" id=7]
-[ext_resource path="res://assets/GearsR.mp3" type="AudioStream" id=8]
-[ext_resource path="res://assets/Scream.mp3" type="AudioStream" id=9]
+[ext_resource path="res://assets/running_fx.mp3" type="AudioStream" id=7]
+[ext_resource path="res://assets/gearsR.mp3" type="AudioStream" id=8]
+[ext_resource path="res://assets/scream.mp3" type="AudioStream" id=9]
 [ext_resource path="res://assets/deathScreen.png" type="Texture" id=10]
 [ext_resource path="res://assets/escape.png" type="Texture" id=11]
+
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.400516

@@ -2,12 +2,12 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/GearsR.mp3-5494d3bb6a93ca36a386078c34080ed0.mp3str"
+path="res://.import/gearsR.mp3-f1e341dd6b21d2246f39cd7dd3cfdad2.mp3str"
 
 [deps]
 
-source_file="res://assets/GearsR.mp3"
-dest_files=[ "res://.import/GearsR.mp3-5494d3bb6a93ca36a386078c34080ed0.mp3str" ]
+source_file="res://assets/gearsR.mp3"
+dest_files=[ "res://.import/gearsR.mp3-f1e341dd6b21d2246f39cd7dd3cfdad2.mp3str" ]
 
 [params]
 

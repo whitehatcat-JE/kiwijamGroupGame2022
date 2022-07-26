@@ -2,12 +2,12 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Torch.mp3-8fd4df7b8fc14b04959d48d4c57a68a5.mp3str"
+path="res://.import/torch.mp3-7d2ed500d9388390a1554b7b9efc7da5.mp3str"
 
 [deps]
 
-source_file="res://assets/Torch.mp3"
-dest_files=[ "res://.import/Torch.mp3-8fd4df7b8fc14b04959d48d4c57a68a5.mp3str" ]
+source_file="res://assets/torch.mp3"
+dest_files=[ "res://.import/torch.mp3-7d2ed500d9388390a1554b7b9efc7da5.mp3str" ]
 
 [params]
 

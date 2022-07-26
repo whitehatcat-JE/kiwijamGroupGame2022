@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/page_flip_01a.mp3-c86dbb553791f6266c6c27c669e677e9.mp3str"
+
+[deps]
+
+source_file="res://assets/page_flip_01a.mp3"
+dest_files=[ "res://.import/page_flip_01a.mp3-c86dbb553791f6266c6c27c669e677e9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
