@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scripts/torch.gd" type="Script" id=1]
 [ext_resource path="res://assets/torch_base1.material" type="Material" id=2]
@@ -123,6 +123,9 @@ surfaces/0 = {
 "vertex_count": 480
 }
 
+[sub_resource type="BoxShape" id=17]
+extents = Vector3( 1.39648, 1, 1 )
+
 [node name="torch" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49, 0.909, -0.349 )
 script = ExtResource( 1 )
@@ -182,3 +185,18 @@ material/0 = null
 __meta__ = {
 "apply_volumetrics": false
 }
+
+[node name="safeArea" type="Area" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape" type="CollisionShape" parent="safeArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.907814, 1.11615 )
+shape = SubResource( 17 )
+
+[node name="decayChance" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="decayChance" to="." method="_on_decayChance_timeout"]

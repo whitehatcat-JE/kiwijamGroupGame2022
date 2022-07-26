@@ -21,6 +21,9 @@ margin_bottom = 1249.0
 rect_scale = Vector2( 2.11225, 1.98442 )
 icon = ExtResource( 3 )
 flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="D0E34Eb0365Ec9Bf18Aeab7D7C4Be4E5" type="Sprite" parent="."]
 position = Vector2( 516, 548 )
@@ -28,12 +31,13 @@ scale = Vector2( 3.03846, 2.37797 )
 texture = ExtResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 519, 549 )
+position = Vector2( 504, 548 )
 current = true
 zoom = Vector2( 3, 3 )
 
 [node name="MapPaper4" type="Sprite" parent="."]
-position = Vector2( 850, 807.5 )
+position = Vector2( 396, 3417 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 
 [node name="MapPaper3" type="Sprite" parent="."]

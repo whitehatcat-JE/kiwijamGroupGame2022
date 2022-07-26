@@ -10,10 +10,10 @@ const E = 2
 const S = 4
 const W = 8
 
-const MAZE_SIZE:int = 8
-const GATE_AMT:int = 4
+const MAZE_SIZE:int = 12
+const GATE_AMT:int = 8
 
-var seedProgress:int = 123450
+var seedProgress:int = 123457
 var sharedSeed:int = 123456789
 
 var cellWalls = {Vector2(0, -1): N, Vector2(1, 0): E, 
@@ -73,20 +73,6 @@ func makeMaze():
 		elif stack:
 			current = stack.pop_back()
 	maze[MAZE_SIZE-1][MAZE_SIZE-1] -= 2
-	for gateIdx in range(GATE_AMT):
-		while true:
-			var gateA:Array = findGate(false)
-			var gateB:Array = findGate(true)
-			var changedMaze = maze.duplicate(true)
-			changedMaze[gateA[0].y][gateA[0].x] += gateA[1]
-			changedMaze[gateA[2].y][gateA[2].x] += gateA[3]
-			changedMaze[gateB[0].y][gateB[0].x] -= gateB[1]
-			changedMaze[gateB[2].y][gateB[2].x] -= gateB[3]
-			if confirmSolvability(changedMaze, gateA[0]) and confirmSolvability(changedMaze, gateB[0]):
-				maze[gateB[0].y][gateB[0].x] -= gateB[1]
-				maze[gateB[2].y][gateB[2].x] -= gateB[3]
-				gates.append([gateA, gateB])
-				break
 
 func findGate(isWall:bool = false):
 	var targetCell:Vector2
@@ -94,6 +80,7 @@ func findGate(isWall:bool = false):
 	while true:
 		targetCell = Vector2(seedRand(0, MAZE_SIZE - 2), seedRand(0, MAZE_SIZE - 2))
 		changeDirection = seedRand(0, 3)
+		for gate in gates: if gate[0][0] == targetCell or gate[1][0] == targetCell: continue;
 		if changeDirection == 0 and targetCell.y == 0: continue;
 		elif changeDirection == 1 and targetCell.x == MAZE_SIZE - 1: continue;
 		elif changeDirection == 2 and targetCell.y == MAZE_SIZE - 1: continue;

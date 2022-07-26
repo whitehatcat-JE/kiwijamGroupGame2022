@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/torch_Body.material" type="Material" id=2]
@@ -6,7 +6,11 @@
 [ext_resource path="res://assets/StylizedFire/FireMask.png" type="Texture" id=4]
 [ext_resource path="res://assets/stylized_fire.shader" type="Shader" id=5]
 [ext_resource path="res://assets/head_textured.fbx" type="PackedScene" id=6]
+[ext_resource path="res://assets/Running_fx.mp3" type="AudioStream" id=7]
 [ext_resource path="res://assets/GearsR.mp3" type="AudioStream" id=8]
+[ext_resource path="res://assets/Scream.mp3" type="AudioStream" id=9]
+[ext_resource path="res://assets/deathScreen.png" type="Texture" id=10]
+[ext_resource path="res://assets/escape.png" type="Texture" id=11]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.400516
@@ -114,31 +118,80 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=20]
 resource_name = "scary"
-length = 1.2
-loop = true
+length = 8.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Jumpscare/head_textured:transform")
+tracks/0/path = NodePath("../head_textured:transform")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
-"transitions": PoolRealArray( -2, -2, -2, -2, -2, -2 ),
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 2, 1 ),
 "update": 0,
-"values": [ Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.4, -0.25 ), Transform( 2.12132, -2.12132, 0, 2.12132, 2.12132, 0, 0, 0, 3, -0.08, 1.4, -0.25 ), Transform( 2.12132, 2.12132, 0, -2.12132, 2.12132, 0, 0, 0, 3, 0.08, 1.4, -0.25 ), Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.4, -0.25 ), Transform( 2.12132, -2.12132, 0, 2.12132, 2.12132, 0, 0, 0, 3, -0.08, 1.4, -0.25 ), Transform( 2.12132, 2.12132, 0, -2.12132, 2.12132, 0, 0, 0, 3, 0.08, 1.4, -0.25 ) ]
+"values": [ Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.385, -2.5 ), Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.385, -0.137 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../Jumpscare/head_textured:visible")
+tracks/1/path = NodePath("../head_textured:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../scream:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../head_textured:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.8, 2.1, 2.4, 2.8, 3.1, 3.3, 3.5, 3.8, 4.1, 4.5, 4.7 ),
+"transitions": PoolRealArray( 1, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 8, 0 ), Vector3( 0, -12, 0 ), Vector3( 0, 7, 0 ), Vector3( 0, -6, 0 ), Vector3( 0, 14, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 8, 0 ), Vector3( 0, -12, 0 ), Vector3( 0, 7, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../deathScreen:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1, 1.7, 4.5 ),
+"transitions": PoolRealArray( 1, 0.5, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "goHome"
+} ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -168,6 +221,9 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector3( -2.184, -0.005, -0.949 ), Vector3( -2.184, -0.01, -0.949 ), Vector3( -2.184, -0.005, -0.949 ) ]
 }
+
+[sub_resource type="BoxShape" id=21]
+extents = Vector3( 0.385208, 1, 0.400321 )
 
 [node name="player" type="KinematicBody"]
 collision_layer = 0
@@ -232,13 +288,13 @@ autoplay = "flicker"
 playback_speed = 0.4
 anims/flicker = SubResource( 2 )
 
+[node name="head_textured" parent="." instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.385, -2.5 )
+visible = false
+
 [node name="Jumpscare" type="AnimationPlayer" parent="."]
 root_node = NodePath("../headAnims")
 anims/scary = SubResource( 20 )
-
-[node name="head_textured" parent="Jumpscare" instance=ExtResource( 6 )]
-transform = Transform( 2.12132, 2.12132, 0, -2.12132, 2.12132, 0, 0, 0, 3, 0.08, 1.4, -0.25 )
-visible = false
 
 [node name="headAnims" type="AnimationPlayer" parent="."]
 autoplay = "headBob"
@@ -257,4 +313,93 @@ stream = ExtResource( 8 )
 wait_time = 30.0
 autostart = true
 
+[node name="steps" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.851561, 2.61167 )
+stream = ExtResource( 7 )
+unit_db = 5.0
+pitch_scale = 0.75
+
+[node name="scream" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41827, -1.35534 )
+stream = ExtResource( 9 )
+
+[node name="deathScreen" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="deathScreen"]
+position = Vector2( 510, 301 )
+current = true
+
+[node name="ColorRect" type="ColorRect" parent="deathScreen/Camera2D"]
+margin_left = -526.0
+margin_top = -318.0
+margin_right = 602.0
+margin_bottom = 344.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeathScreen" type="Sprite" parent="deathScreen/Camera2D"]
+position = Vector2( 3.00002, 5.50002 )
+scale = Vector2( 1.065, 1.065 )
+texture = ExtResource( 10 )
+
+[node name="winScreen" type="Node2D" parent="."]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="winScreen"]
+position = Vector2( 510, 301 )
+
+[node name="ColorRect" type="ColorRect" parent="winScreen/Camera2D"]
+margin_left = -526.0
+margin_top = -318.0
+margin_right = 602.0
+margin_bottom = 344.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Escape" type="Sprite" parent="winScreen/Camera2D"]
+position = Vector2( -6, -6 )
+texture = ExtResource( 11 )
+
+[node name="respawnTimer" type="Timer" parent="winScreen"]
+wait_time = 4.0
+one_shot = true
+
+[node name="lightOffTime" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="safeCheck" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35519, 0 )
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="hitbox" type="CollisionShape" parent="safeCheck"]
+shape = SubResource( 21 )
+
+[node name="exitCheck" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35519, 0 )
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="hitbox" type="CollisionShape" parent="exitCheck"]
+shape = SubResource( 21 )
+
+[node name="lightOffCheck" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="timeout" from="audioScareCooldown" to="." method="_on_audioScareCooldown_timeout"]
+[connection signal="finished" from="steps" to="." method="_on_steps_finished"]
+[connection signal="timeout" from="winScreen/respawnTimer" to="." method="_on_respawnTimer_timeout"]
+[connection signal="timeout" from="lightOffTime" to="." method="_on_lightOffTime_timeout"]
+[connection signal="area_entered" from="safeCheck" to="." method="_on_safeCheck_area_entered"]
+[connection signal="area_entered" from="exitCheck" to="." method="_on_exitCheck_area_entered"]
+[connection signal="timeout" from="lightOffCheck" to="." method="_on_lightOffCheck_timeout"]

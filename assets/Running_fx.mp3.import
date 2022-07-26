@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Running_fx.mp3-952cd604041d557c39653b2d8b1cbf23.mp3str"
+
+[deps]
+
+source_file="res://assets/Running_fx.mp3"
+dest_files=[ "res://.import/Running_fx.mp3-952cd604041d557c39653b2d8b1cbf23.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

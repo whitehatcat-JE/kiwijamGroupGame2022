@@ -4,7 +4,7 @@ export var despawnDistance:int = 10.0
 
 func _ready():
 	visible = false
-	if rand_range(0.0, 1.0) > 0.8:
+	if rand_range(0.0, 1.0) > 0.85:
 		visible = true
 
 func _process(delta):

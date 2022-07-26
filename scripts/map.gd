@@ -16,19 +16,17 @@ onready var mazeMapPiece:PackedScene = preload("res://mazeMapPiece.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	O.makeMaze()
 	renderMaze()
 
 func _process(delta):
 	pass
-	#_on_changeTime_timeout()
 
 
 func generateMazePiece(startingPos:Vector2):
 	var newMazePiece:Node = mazeMapPiece.instance()
 	currentPieces.append(newMazePiece)
 	self.add_child(newMazePiece)
-	newMazePiece.position = startingPos
+	newMazePiece.position = startingPos + Vector2(150, 0)
 	return newMazePiece
 
 func renderMaze():
@@ -57,7 +55,6 @@ func renderMaze():
 				var newPiece:Node = generateMazePiece(Vector2(x*mazePieceSize, y*mazePieceSize))
 				newPiece.position.y -= mazePieceSize / 2
 	for gate in O.gates:
-		print(gate)
 		var targetGate:int
 		if gate[0][4]: targetGate = 0;
 		else: targetGate = 1;

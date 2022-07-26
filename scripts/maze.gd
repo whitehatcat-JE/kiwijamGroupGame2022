@@ -1,15 +1,15 @@
 extends Spatial
 
 enum WALL {
+	UP = 1,
+	RIGHT = 2,
+	DOWN = 4,
+	LEFT = 8,
 	TINTERSECTION,
 	CORNER,
 	HALLWAY,
 	DEADEND,
-	INTERSECTION,
-	UP,
-	RIGHT,
-	DOWN,
-	LEFT
+	INTERSECTION
 }
 
 var pieceSpacing:float = 6.0
@@ -29,48 +29,46 @@ var gateUpdateQueue:Array = []
 var lastMinuteUpdated = -1
 
 func _ready():
-	lastMinuteUpdated = OS.get_datetime()["minute"]
-	O.makeMaze()
 	renderMaze()
 	$endPoint.translation = Vector3((O.MAZE_SIZE)*pieceSpacing, 0.0, (O.MAZE_SIZE-1)*pieceSpacing)
 
-func _process(delta):
-	O.changeMaze()
-	updateMaze()
+#func _process(delta):
+#	O.changeMaze()
+#	updateMaze()
 	
 
 func wallType(walls):
 	match walls:
 		14:
-			return [WALL.DEADEND, 0.0, WALL.UP]
+			return [WALL.DEADEND, 0.0]
 		13:
-			return [WALL.DEADEND, 270.0, WALL.RIGHT]
+			return [WALL.DEADEND, 270.0]
 		12:
-			return [WALL.CORNER, 0.0, WALL.UP, WALL.RIGHT]
+			return [WALL.CORNER, 0.0]
 		11:
-			return [WALL.DEADEND, 180.0, WALL.DOWN]
+			return [WALL.DEADEND, 180.0]
 		10:
-			return [WALL.HALLWAY, 0.0, WALL.UP, WALL.DOWN]
+			return [WALL.HALLWAY, 0.0]
 		9:
-			return [WALL.CORNER, 270.0, WALL.UP, WALL.RIGHT] 
+			return [WALL.CORNER, 270.0] 
 		8:
-			return [WALL.TINTERSECTION, 270.0, WALL.DOWN, WALL.UP, WALL.LEFT]
+			return [WALL.TINTERSECTION, 270.0]
 		7:
-			return [WALL.DEADEND, 90.0, WALL.LEFT]
+			return [WALL.DEADEND, 90.0]
 		6:
-			return [WALL.CORNER, 90.0, WALL.DOWN, WALL.LEFT]
+			return [WALL.CORNER, 90.0]
 		5:
-			return [WALL.HALLWAY, 90.0, WALL.RIGHT, WALL.LEFT]
+			return [WALL.HALLWAY, 90.0]
 		4:
-			return [WALL.TINTERSECTION, 0.0, WALL.LEFT, WALL.RIGHT, WALL.UP]
+			return [WALL.TINTERSECTION, 0.0]
 		3:
-			return [WALL.CORNER, 180.0, WALL.DOWN, WALL.LEFT]
+			return [WALL.CORNER, 180.0]
 		2:
-			return [WALL.TINTERSECTION, 90.0, WALL.UP, WALL.DOWN, WALL.RIGHT]
+			return [WALL.TINTERSECTION, 90.0]
 		1:
-			return [WALL.TINTERSECTION, 180.0, WALL.RIGHT, WALL.LEFT, WALL.DOWN]
+			return [WALL.TINTERSECTION, 180.0]
 		_:
-			return [WALL.INTERSECTION, 0.0, WALL.UP, WALL.RIGHT, WALL.DOWN, WALL.LEFT]
+			return [WALL.INTERSECTION, 0.0]
 
 func renderMaze():
 	for y in range(O.MAZE_SIZE):
@@ -93,11 +91,7 @@ func renderMaze():
 			mazeAssets[y].append(newPiece)
 			newPiece.rotation_degrees.y = wallInfo[1]
 			newPiece.translation = Vector3(x*pieceSpacing, 0.0, y*pieceSpacing)
-			var childNum:int = 0
-			for child in newPiece.get_children():
-				if "gate" in child.name:
-					childNum += 1
-					gates.append([child, Vector2(x, y),  true, wallInfo[1 + childNum]])
+	return
 
 func getGate(direction, tile):
 	for gate in range(len(gates)):

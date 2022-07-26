@@ -64,7 +64,6 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.28576
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, -2.04502e-15, 4.37114e-08, -3.45341e-08, 0.613045, 0.790048, -2.6797e-08, -0.790048, 0.613045, 35.8439, 49.3793, 74.8368 )
-current = true
 far = 300.0
 
 [node name="StaticBody" type="StaticBody" parent="."]
